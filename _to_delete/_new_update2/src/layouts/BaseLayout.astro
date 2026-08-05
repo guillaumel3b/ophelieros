@@ -1,0 +1,105 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  /** Chemin absolu vers une image de partage (Open Graph), ex: "/images/og-default.jpg" */
+  image?: string;
+  /** Schéma(s) JSON-LD supplémentaires à injecter sur cette page (LocalBusiness, etc.) */
+  structuredData?: Record<string, unknown> | Record<string, unknown>[];
+  noindex?: boolean;
+}
+
+const {
+  title,
+  description,
+  image = '/images/pilates-hero.jpg',
+  structuredData,
+  noindex = false,
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const imageURL = new URL(image, Astro.site);
+const siteName = 'Ophélie Ros — Pilates';
+const fullTitle = title === siteName ? title : `${title} · ${siteName}`;
+
+// Schéma de base : la professeure elle-même, présent sur toutes les pages.
+const personSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Ophélie Ros',
+  jobTitle: 'Professeure de Pilates',
+  url: 'https://ophelieros.fr',
+  sameAs: ['https://www.instagram.com/ophe._pilates/'],
+  worksFor: {
+    '@type': 'ExerciseGym',
+    name: 'Ophélie Ros — Pilates',
+  },
+  hasCredential: {
+    '@type': 'EducationalOccupationalCredential',
+    credentialCategory: 'certificate',
+    name: 'Formation complète de Pilates classique (750h)',
+    recognizedBy: {
+      '@type': 'Organization',
+      name: 'Centre 5',
+    },
+  },
+};
+
+const schemas = [
+  personSchema,
+  ...(structuredData ? (Array.isArray(structuredData) ? structuredData : [structuredData]) : []),
+];
+---
+
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={siteName} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:image" content={imageURL} />
+    <meta property="og:locale" content="fr_FR" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={imageURL} />
+
+    <!-- Polices -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    {schemas.map((schema) => (
+      <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+    ))}
+  </head>
+  <body>
+    <a href="#main" class="skip-link">Aller au contenu principal</a>
+    <Header />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

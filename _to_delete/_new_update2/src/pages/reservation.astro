@@ -1,0 +1,58 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SETMORE_URL, salles } from '../data/salles';
+---
+
+<BaseLayout
+  title="Réservation"
+  description="Réservez votre cours de Pilates avec Ophélie Ros en ligne, via Setmore."
+>
+  <section class="section">
+    <div class="container">
+      <h1>Réservez votre cours</h1>
+      <p class="lede">
+        Choisissez la salle et le créneau qui vous conviennent. La réservation se fait
+        directement en ligne, sans appel ni email, via Setmore.
+      </p>
+    </div>
+  </section>
+
+  <section class="section section--alt">
+    <div class="container">
+      <div style="border: 1px solid var(--color-line); border-radius: var(--radius); overflow: hidden;">
+        <!--
+          Widget de réservation Setmore intégré via iframe (méthode officielle Setmore).
+          Si l'intégration de paiement Setmore est activée un jour, ajouter "payment" à l'attribut allow :
+          allow="web-share; payment"
+        -->
+        <iframe
+          src={SETMORE_URL}
+          title="Calendrier de réservation Setmore"
+          scrolling="yes"
+          width="100%"
+          height="700"
+          frameborder="0"
+          allow="web-share"
+          style="display: block; border: none;"
+        ></iframe>
+      </div>
+      <p style="text-align: center; margin-top: 1rem; color: var(--color-ink-soft); font-size: 0.9rem;">
+        Le calendrier ne s'affiche pas ? <a href={SETMORE_URL} target="_blank" rel="noopener">Ouvrez la page de réservation dans un nouvel onglet</a>.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2>Où se déroulent les cours ?</h2>
+      <div class="grid grid--2" style="margin-top: 1.5rem;">
+        {salles.map((salle) => (
+          <a href={`/${salle.slug}`} class="card">
+            <h3>{salle.name}</h3>
+            <p class="site-footer__contact">{salle.arrondissement} — {salle.schedule}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
