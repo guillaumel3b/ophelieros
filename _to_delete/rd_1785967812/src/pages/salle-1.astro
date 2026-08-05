@@ -30,8 +30,9 @@ const localBusinessSchema = {
 >
   <section class="section">
     <div class="container">
+      <p class="eyebrow">Salle 1</p>
       <h1>{salle.name}</h1>
-      <p class="lede">{salle.arrondissement} — {salle.format}, {salle.schedule}</p>
+      <p class="lede">{salle.arrondissement}</p>
     </div>
   </section>
 
@@ -41,7 +42,7 @@ const localBusinessSchema = {
         <h2>Infos pratiques</h2>
         <ul>
           <li><strong>Adresse :</strong> {fullAddress}</li>
-          <li><strong>Cours :</strong> {salle.format} — {salle.schedule}
+          <li><strong>Cours :</strong> {salle.schedule}
             {salle.scheduleNote && <><br /><em>{salle.scheduleNote}</em></>}
           </li>
           <li><strong>Accès :</strong> <span class="placeholder">[À COMPLÉTER: parking, transports en commun à proximité]</span></li>

@@ -14,8 +14,6 @@ export interface Salle {
   schedule: string;
   /** Précision optionnelle sur l'horaire (ex: en cours de test) */
   scheduleNote?: string;
-  /** Format du cours (tapis, reformer...) */
-  format: string;
 }
 
 export const salles: Salle[] = [
@@ -27,7 +25,6 @@ export const salles: Salle[] = [
     addressLocality: 'Paris',
     postalCode: '75013',
     schedule: 'Jeudi à 12h30',
-    format: 'Cours sur tapis',
   },
   {
     slug: 'salle-2',
@@ -38,6 +35,5 @@ export const salles: Salle[] = [
     postalCode: '75005',
     schedule: 'Mercredi à 7h30',
     scheduleNote: 'Horaire actuellement en test, susceptible d’évoluer.',
-    format: 'Cours sur tapis',
   },
 ];

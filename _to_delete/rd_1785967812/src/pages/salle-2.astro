@@ -2,7 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { SETMORE_URL, salles } from '../data/salles';
 
-const salle = salles.find((s) => s.slug === 'salle-1')!;
+const salle = salles.find((s) => s.slug === 'salle-2')!;
 const fullAddress = `${salle.streetAddress}, ${salle.postalCode} ${salle.addressLocality}`;
 const mapsEmbedUrl = `https://www.google.com/maps?q=${encodeURIComponent(fullAddress)}&output=embed`;
 const mapsLinkUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(fullAddress)}`;
@@ -30,8 +30,9 @@ const localBusinessSchema = {
 >
   <section class="section">
     <div class="container">
+      <p class="eyebrow">Salle 2</p>
       <h1>{salle.name}</h1>
-      <p class="lede">{salle.arrondissement} — {salle.format}, {salle.schedule}</p>
+      <p class="lede">{salle.arrondissement}</p>
     </div>
   </section>
 
@@ -41,7 +42,7 @@ const localBusinessSchema = {
         <h2>Infos pratiques</h2>
         <ul>
           <li><strong>Adresse :</strong> {fullAddress}</li>
-          <li><strong>Cours :</strong> {salle.format} — {salle.schedule}
+          <li><strong>Cours :</strong> {salle.schedule}
             {salle.scheduleNote && <><br /><em>{salle.scheduleNote}</em></>}
           </li>
           <li><strong>Accès :</strong> <span class="placeholder">[À COMPLÉTER: parking, transports en commun à proximité]</span></li>

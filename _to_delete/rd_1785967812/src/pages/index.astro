@@ -1,0 +1,205 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { salles } from '../data/salles';
+import { INSTAGRAM_URL, INSTAGRAM_HANDLE } from '../data/partenaires';
+---
+
+<BaseLayout
+  title="Ophélie Ros — Pilates"
+  description="Cours de Pilates avec Ophélie Ros, professeure certifiée. Renforcement musculaire en douceur, posture, mobilité — réservez votre cours en ligne."
+  image="/images/pilates-hero.jpg"
+>
+  <section class="hero">
+    <div class="container hero__inner">
+      <div class="hero__text">
+        <p class="eyebrow">Professeure de Pilates certifiée</p>
+        <h1>Retrouvez force, posture et mobilité avec le Pilates</h1>
+        <p class="lede">
+          Ophélie Ros vous accompagne dans des cours de Pilates en petit groupe, pensés pour
+          renforcer votre corps en profondeur, améliorer votre posture au quotidien et retrouver
+          une vraie mobilité — quel que soit votre niveau de départ.
+        </p>
+        <div class="hero__ctas">
+          <a href="/reservation" class="btn btn--primary">Réserver un cours</a>
+          <a href="/methode-pilates" class="btn btn--secondary">Découvrir la méthode</a>
+        </div>
+      </div>
+      <div class="hero__image">
+        <img src="/images/pilates-hero.jpg" alt="Ophélie Ros en plein exercice de Pilates sur reformer" width="1600" height="1069" />
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <p class="eyebrow">Où me trouver</p>
+      <h2>Deux salles, deux quartiers</h2>
+      <p class="lede">
+        Je donne mes cours chaque semaine dans deux salles. Choisissez celle la plus proche de
+        chez vous pour voir les horaires et réserver directement.
+      </p>
+      <div class="grid grid--2" style="margin-top: 2rem;">
+        {salles.map((salle) => (
+          <div class="card">
+            <h3>{salle.name}</h3>
+            <p class="site-footer__contact">{salle.arrondissement} — {salle.schedule}</p>
+            <a href={`/${salle.slug}`} class="btn btn--secondary">Voir les horaires</a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt">
+    <div class="container grid grid--2" style="align-items: center;">
+      <div>
+        <p class="eyebrow">Cours privés</p>
+        <h2>Un accompagnement sur-mesure, solo ou duo</h2>
+        <p class="lede">
+          Envie d'un suivi individuel, adapté à votre niveau et à vos objectifs ? Je propose aussi
+          des cours privés, en solo ou en duo, ainsi que des cours pour vos événements.
+        </p>
+        <a href="/contact" class="btn btn--secondary">En savoir plus &amp; me contacter</a>
+      </div>
+      <div class="image-card">
+        <img src="/images/pilates-prive.jpg" alt="Ophélie Ros en exercice d'étirement sur reformer" width="935" height="1400" loading="lazy" />
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <p class="eyebrow">Pourquoi le Pilates</p>
+      <h2>Une méthode douce, mais exigeante</h2>
+      <div class="grid grid--3" style="margin-top: 2rem;">
+        <div class="card">
+          <h3>Renforcement en profondeur</h3>
+          <p>Un travail centré sur les muscles profonds, pour un corps stable et fort au quotidien.</p>
+        </div>
+        <div class="card">
+          <h3>Posture &amp; mobilité</h3>
+          <p>Moins de tensions, plus d'amplitude — pour bouger avec aisance à tout âge.</p>
+        </div>
+        <div class="card">
+          <h3>Accessible à tous</h3>
+          <p>Des cours adaptés à chaque niveau, du débutant au pratiquant confirmé.</p>
+        </div>
+      </div>
+      <p style="margin-top: 2rem;">
+        <a href="/methode-pilates">En savoir plus sur la méthode →</a>
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container instagram-section">
+      <p class="eyebrow">Sur Instagram</p>
+      <h2><a href={INSTAGRAM_URL} target="_blank" rel="noopener">{INSTAGRAM_HANDLE}</a></h2>
+      <!--
+        Emplacement réservé pour le fil Instagram. Pour l'activer :
+        1. Ophélie crée un compte gratuit sur un service comme SnapWidget (snapwidget.com) ou LightWidget,
+           et y autorise SON compte Instagram (elle se connecte elle-même, aucun mot de passe à partager).
+        2. Le service génère un code d'intégration (iframe) à coller ici, à la place de ce commentaire.
+        En attendant, un simple lien vers le profil suffit.
+      -->
+      <div class="instagram-grid" aria-hidden="true">
+        {Array.from({ length: 6 }).map(() => <div class="instagram-grid__tile" />)}
+      </div>
+      <a href={INSTAGRAM_URL} target="_blank" rel="noopener" class="btn btn--secondary">Voir le profil</a>
+    </div>
+  </section>
+
+  <hr class="hairline container" />
+
+  <section class="section">
+    <div class="container" style="text-align: center;">
+      <h2>Envie d'essayer un cours ?</h2>
+      <p class="lede" style="margin: 0 auto 1.5rem; text-align: center;">
+        Réservez votre créneau en quelques clics, directement en ligne.
+      </p>
+      <a href="/reservation" class="btn btn--primary">Réserver maintenant</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero {
+    padding: clamp(2.5rem, 6vw, 4.5rem) 0;
+    background: linear-gradient(180deg, var(--color-bg-alt) 0%, var(--color-bg) 100%);
+  }
+
+  .hero__inner {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: center;
+  }
+
+  .hero__ctas {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 1.5rem;
+  }
+
+  .hero__image img {
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius);
+  }
+
+  .image-card {
+    border-radius: var(--radius);
+    overflow: hidden;
+    border: 1px solid var(--color-line);
+  }
+
+  .image-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  @media (max-width: 780px) {
+    .hero__inner {
+      grid-template-columns: 1fr;
+    }
+
+    .hero__image {
+      order: -1;
+    }
+  }
+
+  .instagram-section {
+    text-align: center;
+  }
+
+  .instagram-section h2 a {
+    color: var(--color-ink);
+  }
+
+  .instagram-section h2 a:hover {
+    color: var(--color-accent-dark);
+  }
+
+  .instagram-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 0.5rem;
+    max-width: 40rem;
+    margin: 1.5rem auto 1.8rem;
+  }
+
+  .instagram-grid__tile {
+    aspect-ratio: 1;
+    background: var(--color-bg-alt);
+    border: 1px solid var(--color-line);
+  }
+
+  @media (max-width: 640px) {
+    .instagram-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+</style>

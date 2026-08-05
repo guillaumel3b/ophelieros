@@ -1,17 +1,18 @@
 :root {
-  --color-bg: #ffffff;
-  --color-bg-alt: #f4f2ef;
-  --color-ink: #1d1b18;
-  --color-ink-soft: #6f6a62;
-  --color-accent: #4a4038;
-  --color-cream: #ffffff;
-  --color-line: #e4e1da;
+  --color-bg: #f8f6f1;
+  --color-bg-alt: #f0ebe2;
+  --color-ink: #292521;
+  --color-ink-soft: #756e63;
+  --color-accent: #a06a45;
+  --color-accent-dark: #7f5334;
+  --color-cream: #fffdf9;
+  --color-line: #ddd4c2;
 
-  --font-heading: "Newsreader", "Georgia", serif;
+  --font-heading: "Fraunces", "Georgia", serif;
   --font-body: "Inter", "Helvetica Neue", Arial, sans-serif;
 
-  --container-max: 70rem;
-  --radius: 3px;
+  --container-max: 72rem;
+  --radius: 6px;
 }
 
 * {
@@ -40,27 +41,25 @@ img {
 h1, h2, h3, h4 {
   font-family: var(--font-heading);
   color: var(--color-ink);
-  line-height: 1.25;
+  line-height: 1.22;
   margin: 0 0 0.6em;
   font-weight: 500;
-  letter-spacing: 0;
+  letter-spacing: -0.01em;
 }
 
-h1 { font-size: clamp(2rem, 3.4vw, 2.9rem); }
-h2 { font-size: clamp(1.45rem, 2.4vw, 1.95rem); }
-h3 { font-size: 1.15rem; font-weight: 500; }
+h1 { font-size: clamp(2.1rem, 3.6vw, 3.1rem); }
+h2 { font-size: clamp(1.5rem, 2.6vw, 2.1rem); }
+h3 { font-size: 1.2rem; font-weight: 500; }
 
 p { margin: 0 0 1em; }
 
 a {
-  color: var(--color-ink);
-  text-decoration: underline;
-  text-decoration-color: var(--color-line);
-  text-underline-offset: 2px;
+  color: var(--color-accent-dark);
+  text-decoration: none;
 }
 
 a:hover {
-  text-decoration-color: currentColor;
+  text-decoration: underline;
 }
 
 .container {
@@ -81,14 +80,15 @@ a:hover {
   display: block;
   font-family: var(--font-heading);
   font-style: italic;
-  font-weight: 400;
-  font-size: 1rem;
+  font-weight: 500;
+  font-size: 1.05rem;
+  letter-spacing: 0;
   color: var(--color-ink-soft);
   margin-bottom: 0.5rem;
 }
 
 .lede {
-  font-size: 1.08rem;
+  font-size: 1.1rem;
   color: var(--color-ink-soft);
   max-width: 40rem;
   line-height: 1.7;
@@ -96,12 +96,11 @@ a:hover {
 
 .btn {
   display: inline-block;
-  padding: 0.7rem 1.5rem;
-  border-radius: 2px;
+  padding: 0.75rem 1.7rem;
+  border-radius: 999px;
   font-weight: 500;
-  font-size: 0.9rem;
-  transition: opacity 0.15s ease, background-color 0.15s ease, border-color 0.15s ease;
-  text-decoration: none;
+  font-size: 0.92rem;
+  transition: opacity 0.15s ease, background-color 0.15s ease;
 }
 
 .btn:hover {
@@ -109,12 +108,12 @@ a:hover {
 }
 
 .btn--primary {
-  background: var(--color-ink);
+  background: var(--color-accent);
   color: var(--color-cream);
 }
 
 .btn--primary:hover {
-  background: var(--color-accent);
+  background: var(--color-accent-dark);
 }
 
 .btn--secondary {
@@ -146,11 +145,11 @@ a:hover {
 
 .placeholder {
   display: inline-block;
-  background: #f4f2ef;
-  border: 1px dashed #c9c4ba;
-  color: #6f6a62;
+  background: #f4ede0;
+  border: 1px dashed #cbb896;
+  color: #7a6440;
   padding: 0.15em 0.5em;
-  border-radius: 2px;
+  border-radius: 4px;
   font-size: 0.9em;
   font-style: italic;
 }
@@ -172,5 +171,5 @@ a:hover {
   z-index: 100;
   background: var(--color-cream);
   padding: 0.5rem 1rem;
-  border-radius: 2px;
+  border-radius: 6px;
 }
