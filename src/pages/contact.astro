@@ -1,0 +1,55 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { INSTAGRAM_URL, INSTAGRAM_HANDLE } from '../data/partenaires';
+---
+
+<BaseLayout
+  title="Contact"
+  description="Contactez Ophélie Ros pour réserver un cours privé, solo ou duo, ou pour toute question sur les cours de Pilates."
+>
+  <section class="section">
+    <div class="container">
+      <p class="eyebrow">Contact</p>
+      <h1>Une question ? Un cours privé ?</h1>
+      <p class="lede">
+        Pour réserver un cours collectif, utilisez directement la page réservation. Pour un cours
+        privé, un événement, ou toute autre question, contactez-moi via l'un des moyens ci-dessous.
+      </p>
+    </div>
+  </section>
+
+  <section class="section section--alt">
+    <div class="container grid grid--2">
+      <div class="card">
+        <h3>Coordonnées</h3>
+        <ul>
+          <li><strong>Email :</strong> <span class="placeholder">[À COMPLÉTER: email]</span></li>
+          <li><strong>Téléphone :</strong> <span class="placeholder">[À COMPLÉTER: téléphone]</span></li>
+          <li><strong>Instagram :</strong> <a href={INSTAGRAM_URL} target="_blank" rel="noopener">{INSTAGRAM_HANDLE}</a></li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Réserver un cours collectif</h3>
+        <p>Pour réserver directement un créneau dans l'une des deux salles, rendez-vous sur la page réservation.</p>
+        <a href="/reservation" class="btn btn--primary">Réserver un cours</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="card">
+        <h2>Cours privés, solo ou duo</h2>
+        <p>
+          Un cours privé de Pilates offre un accompagnement personnalisé qui permet d'adapter chaque
+          exercice à votre niveau, vos besoins et vos objectifs (posture, renforcement, mobilité,
+          récupération...). J'y corrige en temps réel vos mouvements, j'assure une exécution précise
+          et sécurisée, et je vous fais progresser plus rapidement grâce à un suivi individuel. C'est
+          aussi un moment entièrement centré sur vous, favorisant concentration, détente et
+          efficacité.
+        </p>
+        <p style="margin-bottom: 0;">Pour plus d'informations sur les cours privés ou pour organiser un événement, contactez-moi directement.</p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

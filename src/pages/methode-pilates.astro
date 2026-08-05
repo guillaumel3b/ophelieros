@@ -1,0 +1,96 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="La méthode Pilates"
+  description="Découvrez la méthode Pilates : principes, bienfaits pour le corps et l'esprit, et pour qui sont faits les cours d'Ophélie Ros."
+>
+  <section class="section">
+    <div class="container grid grid--2" style="align-items: center; gap: 3rem;">
+      <div>
+        <p class="eyebrow">La méthode</p>
+        <h1>Le Pilates, une méthode complète</h1>
+        <p class="lede">
+          La méthode enseignée est le Pilates classique, issu de la méthode créée par Joseph
+          Pilates sous le nom de « Contrology », adaptée et portée à travers le monde par Romana
+          Kryzanowska.
+        </p>
+        <p class="lede">
+          <span class="placeholder">
+            [À COMPLÉTER: approche personnelle d'Ophélie — son style d'enseignement, ce qui la distingue]
+          </span>
+        </p>
+      </div>
+      <div class="image-card">
+        <img src="/images/pilates-methode.jpg" alt="Exercice de Pilates sur reformer" width="935" height="1400" />
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .image-card {
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 20px 40px -20px rgba(47, 42, 38, 0.3);
+    }
+
+    .image-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+  </style>
+
+  <section class="section section--alt">
+    <div class="container">
+      <h2>Les principes fondamentaux</h2>
+      <div class="grid grid--3" style="margin-top: 2rem;">
+        <div class="card">
+          <h3>Centrage</h3>
+          <p>
+            <span class="placeholder">[À COMPLÉTER: explication du principe]</span>
+          </p>
+        </div>
+        <div class="card">
+          <h3>Contrôle &amp; précision</h3>
+          <p>
+            <span class="placeholder">[À COMPLÉTER: explication du principe]</span>
+          </p>
+        </div>
+        <div class="card">
+          <h3>Respiration</h3>
+          <p>
+            <span class="placeholder">[À COMPLÉTER: explication du principe]</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2>Les bienfaits</h2>
+      <ul>
+        <li>Renforcement des muscles profonds (gainage, dos, plancher pelvien)</li>
+        <li>Amélioration de la posture et diminution des douleurs de dos</li>
+        <li>Gain de souplesse et de mobilité articulaire</li>
+        <li>Meilleure conscience corporelle et gestion du stress</li>
+        <li><span class="placeholder">[À COMPLÉTER: autres bienfaits mis en avant par Ophélie]</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section section--alt">
+    <div class="container">
+      <h2>Pour qui ?</h2>
+      <p class="lede">
+        <span class="placeholder">
+          [À COMPLÉTER: public visé — débutants, sportifs, personnes en rééducation, seniors...]
+        </span>
+      </p>
+      <a href="/reservation" class="btn btn--primary" style="margin-top: 1rem;">Réserver un premier cours</a>
+    </div>
+  </section>
+</BaseLayout>
