@@ -77,16 +77,6 @@ a:hover {
   background: var(--color-bg-alt);
 }
 
-.eyebrow {
-  display: block;
-  font-family: var(--font-heading);
-  font-style: italic;
-  font-weight: 400;
-  font-size: 1rem;
-  color: var(--color-ink-soft);
-  margin-bottom: 0.5rem;
-}
-
 .lede {
   font-size: 1.08rem;
   color: var(--color-ink-soft);
@@ -143,17 +133,6 @@ a:hover {
 
 .grid--2 { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
 .grid--3 { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
-
-.placeholder {
-  display: inline-block;
-  background: #f4f2ef;
-  border: 1px dashed #c9c4ba;
-  color: #6f6a62;
-  padding: 0.15em 0.5em;
-  border-radius: 2px;
-  font-size: 0.9em;
-  font-style: italic;
-}
 
 .hairline {
   border: none;

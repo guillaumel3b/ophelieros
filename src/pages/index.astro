@@ -1,15 +1,22 @@
 ---
+import { Image } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { salles } from '../data/salles';
 import { INSTAGRAM_URL } from '../data/partenaires';
+import heroImg from '../assets/images/pilates-hero.jpg';
+import priveImg from '../assets/images/pilates-prive.jpg';
+import instagram1 from '../assets/images/instagram-1.jpg';
+import instagram2 from '../assets/images/instagram-2.jpg';
+import instagram3 from '../assets/images/instagram-3.jpg';
+import instagram4 from '../assets/images/instagram-4.jpg';
 
 // Sélection de photos (envoyées par Ophélie) pour illustrer la section Instagram.
 // Toutes renvoient vers le profil général — pas de lien vers un post précis.
 const instagramPhotos = [
-  { src: '/images/instagram/instagram-1.jpg', alt: 'Ophélie en exercice sur reformer' },
-  { src: '/images/instagram/instagram-2.jpg', alt: 'Reflet dans le miroir du studio, enseigne "Pilates"' },
-  { src: '/images/instagram/instagram-3.jpg', alt: 'Ophélie en exercice sur reformer, jambes tendues' },
-  { src: '/images/instagram/instagram-4.jpg', alt: 'Anneau et ballon de Pilates sur un tapis' },
+  { src: instagram1, alt: 'Ophélie en exercice sur reformer' },
+  { src: instagram2, alt: 'Reflet dans le miroir du studio, enseigne "Pilates"' },
+  { src: instagram3, alt: 'Ophélie en exercice sur reformer, jambes tendues' },
+  { src: instagram4, alt: 'Anneau et ballon de Pilates sur un tapis' },
 ];
 ---
 
@@ -33,7 +40,15 @@ const instagramPhotos = [
         </div>
       </div>
       <div class="hero__media">
-        <img src="/images/pilates-hero.jpg" alt="Ophélie Ros en plein exercice de Pilates sur reformer" width="1600" height="1069" />
+        <Image
+          src={heroImg}
+          alt="Ophélie Ros en plein exercice de Pilates sur reformer"
+          widths={[400, 800, 1200, 1600]}
+          sizes="(max-width: 780px) 100vw, 50vw"
+          quality={82}
+          fetchpriority="high"
+          loading="eager"
+        />
       </div>
     </div>
   </section>
@@ -67,7 +82,14 @@ const instagramPhotos = [
         <a href="/contact" class="btn btn--secondary">Me contacter</a>
       </div>
       <div class="cours-prives__media">
-        <img src="/images/pilates-prive.jpg" alt="Ophélie Ros en exercice d'étirement sur reformer" width="935" height="1400" loading="lazy" />
+        <Image
+          src={priveImg}
+          alt="Ophélie Ros en exercice d'étirement sur reformer"
+          widths={[320, 640, 935]}
+          sizes="20rem"
+          quality={82}
+          loading="lazy"
+        />
       </div>
     </div>
   </section>
@@ -86,7 +108,7 @@ const instagramPhotos = [
       <div class="instagram-grid">
         {instagramPhotos.map((photo) => (
           <a href={INSTAGRAM_URL} target="_blank" rel="noopener" class="instagram-grid__item">
-            <img src={photo.src} alt={photo.alt} loading="lazy" />
+            <Image src={photo.src} alt={photo.alt} densities={[1, 2]} width={220} quality={80} loading="lazy" />
           </a>
         ))}
       </div>

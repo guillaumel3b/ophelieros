@@ -2,6 +2,18 @@
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import '../styles/global.css';
+// Polices auto-hébergées (via Fontsource) plutôt que chargées depuis fonts.googleapis.com :
+// évite une requête tierce bloquante au premier rendu, et un point de dépendance externe en moins.
+// Fichiers statiques (pas la version "variable") : le site n'utilise que 2 graisses fixes
+// (Newsreader 500 normal pour les titres, Newsreader 400 italique pour la tagline), donc les
+// fichiers statiques sont bien plus légers que la police variable (qui encode tout l'intervalle
+// de graisses 200-800 même si on n'en utilise qu'une poignée).
+import '@fontsource/newsreader/500.css';
+import '@fontsource/newsreader/400-italic.css';
+import '@fontsource/inter/400.css';
+import '@fontsource/inter/400-italic.css';
+import '@fontsource/inter/500.css';
+import '@fontsource/inter/600.css';
 
 interface Props {
   title: string;
@@ -61,6 +73,9 @@ const schemas = [
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
@@ -81,14 +96,6 @@ const schemas = [
     <meta name="twitter:title" content={fullTitle} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={imageURL} />
-
-    <!-- Polices -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Inter:wght@400;500;600&display=swap"
-      rel="stylesheet"
-    />
 
     {schemas.map((schema) => (
       <script type="application/ld+json" set:html={JSON.stringify(schema)} />

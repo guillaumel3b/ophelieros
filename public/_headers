@@ -1,0 +1,20 @@
+# Fichiers buildés par Astro (JS/CSS/images optimisées) : noms de fichiers avec hash de contenu,
+# donc sûrs à mettre en cache "immutable" très longtemps — un changement de contenu change le nom.
+/_astro/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Images statiques dans public/images : pas de hash dans le nom, cache plus prudent (1 semaine)
+# pour laisser une mise à jour de photo se propager sans devoir renommer le fichier.
+/images/*
+  Cache-Control: public, max-age=604800
+
+/favicon.svg
+  Cache-Control: public, max-age=604800
+
+# En-têtes de sécurité de base sur toutes les pages. Pas de CSP volontairement : le site embarque
+# Google Maps et Setmore en iframe, une CSP mal réglée casserait ces intégrations sans qu'on puisse
+# le vérifier facilement depuis cet environnement — à ajouter plus tard avec des tests en conditions réelles.
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: geolocation=(), microphone=(), camera=()

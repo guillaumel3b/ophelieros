@@ -1,11 +1,13 @@
 ---
+import { Image } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { studiosPartenaires } from '../data/partenaires';
+import portraitImg from '../assets/images/ophelie-portrait.jpg';
 ---
 
 <BaseLayout
   title="À propos d'Ophélie Ros"
-  description="Formation complète de Pilates classique (750h, Centre 5, Paris), enseignement depuis 2023 dans plusieurs studios parisiens — parcours et certifications d'Ophélie Ros."
+  description="Formation complète de Pilates classique (750h, Centre 5, Paris), enseignement depuis 2023 — parcours et certifications d'Ophélie Ros."
 >
   <section class="section">
     <div class="container grid grid--2" style="align-items: center; gap: 3rem;">
@@ -18,7 +20,14 @@ import { studiosPartenaires } from '../data/partenaires';
         </blockquote>
       </div>
       <div class="image-card" style="max-width: 22rem; margin: 0 auto;">
-        <img src="/images/ophelie-portrait.jpg" alt="Portrait d'Ophélie Ros" width="802" height="1000" />
+        <Image
+          src={portraitImg}
+          alt="Portrait d'Ophélie Ros"
+          widths={[352, 704]}
+          sizes="22rem"
+          quality={82}
+          loading="eager"
+        />
       </div>
     </div>
   </section>
