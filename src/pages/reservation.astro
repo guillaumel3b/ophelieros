@@ -12,7 +12,7 @@ import { SETMORE_URL, salles } from '../data/salles';
       <h1>Réservez votre cours</h1>
       <p class="lede">
         Choisissez la salle et le créneau qui vous conviennent. La réservation se fait
-        directement en ligne, sans appel ni email, via Setmore.
+        directement en ligne sur Setmore. Si vous rencontrez des difficultés, n'hésitez pas à <a href="/contact">me contacter</a>.
       </p>
     </div>
   </section>
@@ -46,12 +46,17 @@ import { SETMORE_URL, salles } from '../data/salles';
     <div class="container">
       <h2>Où se déroulent les cours ?</h2>
       <div class="grid grid--2" style="margin-top: 1.5rem;">
-        {salles.map((salle) => (
-          <a href={`/${salle.slug}`} class="card">
-            <h3>{salle.name}</h3>
-            <p class="site-footer__contact">{salle.arrondissement} — {salle.schedule}</p>
-          </a>
-        ))}
+        {salles.map((salle) => {
+          const fullAddress = `${salle.streetAddress}, ${salle.postalCode} ${salle.addressLocality}`;
+          const mapsLinkUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(fullAddress)}`;
+          return (
+            <a href={mapsLinkUrl} target="_blank" rel="noopener" class="card">
+              <h3>{salle.name}</h3>
+              <p class="site-footer__contact">{salle.arrondissement} — {salle.schedule}</p>
+              <p class="site-footer__contact">{fullAddress}</p>
+            </a>
+          );
+        })}
       </div>
     </div>
   </section>

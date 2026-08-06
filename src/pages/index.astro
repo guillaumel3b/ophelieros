@@ -1,7 +1,16 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { salles } from '../data/salles';
-import { INSTAGRAM_URL, INSTAGRAM_HANDLE } from '../data/partenaires';
+import { INSTAGRAM_URL } from '../data/partenaires';
+
+// Sélection de photos (envoyées par Ophélie) pour illustrer la section Instagram.
+// Toutes renvoient vers le profil général — pas de lien vers un post précis.
+const instagramPhotos = [
+  { src: '/images/instagram/instagram-1.jpg', alt: 'Ophélie en exercice sur reformer' },
+  { src: '/images/instagram/instagram-2.jpg', alt: 'Reflet dans le miroir du studio, enseigne "Pilates"' },
+  { src: '/images/instagram/instagram-3.jpg', alt: 'Ophélie en exercice sur reformer, jambes tendues' },
+  { src: '/images/instagram/instagram-4.jpg', alt: 'Anneau et ballon de Pilates sur un tapis' },
+];
 ---
 
 <BaseLayout
@@ -15,8 +24,8 @@ import { INSTAGRAM_URL, INSTAGRAM_HANDLE } from '../data/partenaires';
         <h1>Ophélie Ros</h1>
         <p class="hero__tagline">Professeure de Pilates classique, à Paris.</p>
         <p class="lede">
-          Elle enseigne le Pilates classique sur tapis et sur reformer. Cours collectifs dans deux
-          salles parisiennes, cours privés à domicile.
+          J'enseigne le Pilates classique sur tapis et sur appareils. Cours collectifs et cours
+          privés à domicile dans Paris.
         </p>
         <div class="hero__ctas">
           <a href="/reservation" class="btn btn--primary">Réserver un cours collectif</a>
@@ -32,7 +41,7 @@ import { INSTAGRAM_URL, INSTAGRAM_HANDLE } from '../data/partenaires';
   <section class="section">
     <div class="container">
       <h2>Cours collectifs, chaque semaine</h2>
-      <p class="lede">Cours sur tapis, une fois par semaine dans chacune des deux salles.</p>
+      <p class="lede">Cours sur tapis, hebdomadaire dans chacune des deux salles.</p>
       <ul class="salles-list">
         {salles.map((salle) => (
           <li class="salles-list__item">
@@ -40,7 +49,7 @@ import { INSTAGRAM_URL, INSTAGRAM_HANDLE } from '../data/partenaires';
               <h3>{salle.name}</h3>
               <p class="salles-list__meta">{salle.arrondissement} — {salle.schedule}</p>
             </div>
-            <a href={`/${salle.slug}`} class="btn btn--secondary">Réserver</a>
+            <a href="/reservation" class="btn btn--secondary">Réserver</a>
           </li>
         ))}
       </ul>
@@ -52,7 +61,7 @@ import { INSTAGRAM_URL, INSTAGRAM_HANDLE } from '../data/partenaires';
       <div class="cours-prives__text">
         <h2>À domicile, ou pour un événement</h2>
         <p class="lede">
-          En complément des cours collectifs, elle se déplace aussi à domicile pour des séances
+          En complément des cours collectifs, je me déplace aussi à domicile pour des séances
           individuelles ou en duo, ainsi que pour des événements.
         </p>
         <a href="/contact" class="btn btn--secondary">Me contacter</a>
@@ -66,26 +75,20 @@ import { INSTAGRAM_URL, INSTAGRAM_HANDLE } from '../data/partenaires';
   <section class="section">
     <div class="container" style="text-align: center;">
       <p class="lede" style="margin: 0 auto 1.5rem; text-align: center;">
-        Formation, certifications, expérience — le parcours complet d'Ophélie.
+        Formation, certifications, expérience — mon parcours complet.
       </p>
-      <a href="/a-propos" class="btn btn--secondary">Découvrir son parcours</a>
+      <a href="/a-propos" class="btn btn--secondary">Découvrir mon parcours</a>
     </div>
   </section>
 
   <section class="section section--alt">
     <div class="container instagram-section">
-      <h2>Suivez les cours en images</h2>
-      <p class="lede" style="margin: 0 auto 1.5rem;">
-        <a href={INSTAGRAM_URL} target="_blank" rel="noopener">{INSTAGRAM_HANDLE}</a>
-      </p>
-      <!--
-        Emplacement réservé pour le fil Instagram. Pour l'activer :
-        Ophélie récupère, pour chaque publication à mettre en avant, le code d'intégration officiel
-        via le bouton "..." → "Intégrer" sur instagram.com, et me l'envoie. Aucune connexion de
-        compte ni mot de passe nécessaire.
-      -->
-      <div class="instagram-grid" aria-hidden="true">
-        {Array.from({ length: 6 }).map(() => <div class="instagram-grid__tile" />)}
+      <div class="instagram-grid">
+        {instagramPhotos.map((photo) => (
+          <a href={INSTAGRAM_URL} target="_blank" rel="noopener" class="instagram-grid__item">
+            <img src={photo.src} alt={photo.alt} loading="lazy" />
+          </a>
+        ))}
       </div>
       <a href={INSTAGRAM_URL} target="_blank" rel="noopener" class="btn btn--secondary">Voir le profil</a>
     </div>
@@ -220,21 +223,35 @@ import { INSTAGRAM_URL, INSTAGRAM_HANDLE } from '../data/partenaires';
 
   .instagram-grid {
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    gap: 0.5rem;
-    max-width: 40rem;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.75rem;
+    max-width: 50rem;
     margin: 0 auto 1.8rem;
   }
 
-  .instagram-grid__tile {
-    aspect-ratio: 1;
-    background: var(--color-bg);
+  .instagram-grid__item {
+    display: block;
+    aspect-ratio: 3 / 4;
+    overflow: hidden;
+    border-radius: var(--radius);
     border: 1px solid var(--color-line);
+  }
+
+  .instagram-grid__item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
+  }
+
+  .instagram-grid__item:hover img {
+    transform: scale(1.03);
   }
 
   @media (max-width: 640px) {
     .instagram-grid {
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(2, 1fr);
     }
   }
 </style>
